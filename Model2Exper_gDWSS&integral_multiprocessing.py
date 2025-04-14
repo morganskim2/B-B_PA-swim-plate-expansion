@@ -73,21 +73,6 @@ def rank_BIOMint(r,y_pred,y_actual,cutscale): # measure of total biomass agreeme
         diff_BIOMint=(full_pred/pred_BIOMint)*abs(pred_BIOMint-actual_BIOMint) # changed to a sum from a product of components
     return diff_BIOMint
 
-# def SSEwght_cutoff(start_point, y_pred, y_actual, cutscale):
-#     tot_sse=0; calc=np.zeros(len(y_pred))
-#     g1=[abs(x) for x in np.gradient(y_actual)]
-#     g2=[]
-#     for i in range(len(g1)):
-#         g2.append(10*g1[i]/sum(g1))
-#     for k in range(start_point,len(y_pred)):
-#         if y_actual[k]>0.01*cutscale:
-#             calc[k]=g2[k]*(y_pred[k]-y_actual[k])**2
-#         if sum(calc)==0:
-#             tot_sse=51
-#         elif sum(calc)>0:
-#             tot_sse=sum(calc)
-#     return tot_sse
-
 def param_fullsearch_BIOMint(df_library,tdata,exper_rad,exper_dens,yield_est,exper_biom,path_xlsx):
     # Function handles 1 timepoint (tdata, float), 1 sample replicate(exper_dens, array) at a time
     # Uses exper_biom and yield_est to have model-to-experiment fitting occur over gDW/L space
